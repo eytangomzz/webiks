@@ -1,1 +1,1 @@
-bucket_name = "my-new-bucket"
+bucket_name = "my-new-bucketforwebiks"

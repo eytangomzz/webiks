@@ -64,6 +64,28 @@ def create_resource(resource_type):
 
     return jsonify({"resource_type": resource_type, "result": result})
 
+@app.route('/resource/<resource_type>', methods=['DELETE'])
+def delete_resource(resource_type):
+    try:
+        if resource_type == 's3':
+            resource_name = request.args.get('bucket_name')
+        elif resource_type == 'rds':
+            resource_name = request.args.get('db_name')
+        elif resource_type == 'lambda':
+            resource_name = request.args.get('function_name')
+        else:
+            return jsonify({"error": "Unsupported resource type"}), 400
+
+        subprocess.run(["terraform", "init"], cwd=TERRAFORM_DIR, check=True)
+
+        destroy_cmd = ["terraform", "destroy", "-auto-approve", "-var", f"bucket_name={resource_name}"]
+        subprocess.run(destroy_cmd, cwd=TERRAFORM_DIR, check=True)
+
+        return jsonify({"message": f"{resource_type} resource '{resource_name}' deleted successfully"}), 200
+
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": str(e)}), 500
+
 
 
 if __name__ == '__main__':
