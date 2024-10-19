@@ -1,1 +1,5 @@
-bucket_name = "my-new-bucketforwebiks"
+db_name = "['123']"
+db_instance_class = "None"
+engine = "None"
+username = "None"
+password = "None"
