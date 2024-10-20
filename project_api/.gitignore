@@ -11,3 +11,4 @@
 !/terraform
 !/terraform/rds
 !/terraform/s3
+!*.tfvars
