@@ -9,5 +9,5 @@
 !requirements.txt
 !Dockerfile
 !/terraform
-!rds
-!s3
+!/terraform/rds
+!/terraform/s3
