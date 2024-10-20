@@ -7,6 +7,6 @@ RUN pip install --upgrade pip  \
 
 WORKDIR /app
 
-COPY app.py .
+COPY . .
 
 CMD ["python", "./app.py"] 
