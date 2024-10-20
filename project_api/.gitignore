@@ -1,4 +1,13 @@
-.terraform
-terraform.tfstate
-terraform.tfstate.backup
-.venv
+# Ignore all
+*
+
+
+# Unignore 
+!.gitignore
+!*.tf
+!*.py
+!requirements.txt
+!Dockerfile
+!/terraform
+!rds
+!s3
